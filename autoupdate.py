@@ -57,9 +57,9 @@ class InstallRef(TypedDict):
 
 
 class Package(TypedDict):
-    basename: str  # edgedb-server
+    basename: str  # gel-server
     slot: str | None  # 1-alpha6-dev5069
-    name: str  # edgedb-server-1-alpha6-dev5069
+    name: str  # gel-server-1-alpha6-dev5069
     version: str  # 1.0a6.dev5069+g0839d6e8
     version_details: Version
     version_key: str  # 1.0.0~alpha.6~dev.5069.2020091300~nightly
@@ -69,7 +69,7 @@ class Package(TypedDict):
     installref: str
 
 
-INDEX_URL = "https://packages.edgedb.com/archive/.jsonindexes"
+INDEX_URL = "https://packages.geldata.com/archive/.jsonindexes"
 CURRENT_DIR = pathlib.Path(__file__).parent
 VERSION_BLOCKLIST = {"1.0a3"}
 
@@ -87,7 +87,7 @@ def query_latest_version(index: str) -> Package:
         indexes = json.load(url)
     versions: dict[Version, Package] = {}
     for package in indexes["packages"]:
-        if not package["name"] == "edgedb-cli":
+        if not package["name"] == "gel-cli":
             continue
         if package["version"] in VERSION_BLOCKLIST:
             continue
@@ -115,6 +115,8 @@ def get_tpl_data(channel: str) -> dict[str, Any]:
         for target in targets
     }
 
+    print(packages)
+
     versions = {
         version_to_str(v["version_details"])
         for v in packages.values()
@@ -126,7 +128,7 @@ def get_tpl_data(channel: str) -> dict[str, Any]:
     for target, package in packages.items():
         for installref in package["installrefs"]:
             if installref["encoding"] == "identity":
-                url = "https://packages.edgedb.com" + installref["ref"]
+                url = "https://packages.geldata.com" + installref["ref"]
                 parsed = urllib.parse.urlparse(url)
                 artifacts[target] = {
                     "url": url,
@@ -135,6 +137,8 @@ def get_tpl_data(channel: str) -> dict[str, Any]:
                 }
 
     return {
+        "name": "gel",
+        "marketing_name": "Gel",
         "version": next(iter(versions)),
         "artifacts": artifacts,
         "channel": channel,
@@ -156,9 +160,9 @@ def render_formula(path: pathlib.Path, channel: str) -> None:
 
 
 def main() -> None:
-    release_cli = CURRENT_DIR / "Formula" / "edgedb-cli.rb"
-    testing_cli = CURRENT_DIR / "Formula" / "edgedb-cli-testing.rb"
-    nightly_cli = CURRENT_DIR / "Formula" / "edgedb-cli-nightly.rb"
+    release_cli = CURRENT_DIR / "Formula" / "gel-cli.rb"
+    testing_cli = CURRENT_DIR / "Formula" / "gel-cli-testing.rb"
+    nightly_cli = CURRENT_DIR / "Formula" / "gel-cli-nightly.rb"
     render_formula(release_cli, channel="release")
     render_formula(testing_cli, channel="testing")
     render_formula(nightly_cli, channel="nightly")

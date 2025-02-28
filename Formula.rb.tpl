@@ -1,8 +1,8 @@
-{% set binary = "edgedb" + ("-{}".format(channel) if channel != "release" else "") -%}
+{% set binary = name + ("-{}".format(channel) if channel != "release" else "") -%}
 
-class EdgedbCli{{ channel.capitalize() if channel != "release" }} < Formula
-  desc "Latest release of the EdgeDB command-line client (edgedb)"
-  homepage "https://github.com/edgedb/edgedb-cli"
+class {{ name.capitalize() }}Cli{{ channel.capitalize() if channel != "release" }} < Formula
+  desc "Latest release of the {{ marketing_name }} command-line client ({{ name }})"
+  homepage "https://github.com/geldata/gel-cli"
   version "{{ version }}"
 
   on_macos do
