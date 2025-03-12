@@ -1,24 +1,24 @@
 class GelCli < Formula
   desc "Latest release of the Gel command-line client (gel)"
   homepage "https://github.com/geldata/gel-cli"
-  version "7.1.0"
+  version "7.1.1"
 
   on_macos do
     if Hardware::CPU.physical_cpu_arm64?
-      url "https://packages.geldata.com/archive/aarch64-apple-darwin/gel-cli-7.1.0+7877b37",
+      url "https://packages.geldata.com/archive/aarch64-apple-darwin/gel-cli-7.1.1+616a110",
         using: :nounzip
-      sha256 "073dd03ffe5cb106d564c59fea386e714734227efad567ab4c85e82008fb68ce"
+      sha256 "35169bec6611e969dcd6cf2679f925528f4ec141f005f8cef26138b27391a273"
 
       def install
-        bin.install "gel-cli-7.1.0+7877b37" => "gel"
+        bin.install "gel-cli-7.1.1+616a110" => "gel"
       end
     elsif Hardware::CPU.intel?
-      url "https://packages.geldata.com/archive/x86_64-apple-darwin/gel-cli-7.1.0+7877b37",
+      url "https://packages.geldata.com/archive/x86_64-apple-darwin/gel-cli-7.1.1+616a110",
         using: :nounzip
-      sha256 "277969c47369c3d9df7cb44ed802e6c2dd0802148cc71653831313279c49782b"
+      sha256 "b86aab237aaefa8b0e784ba5b1eef46b615ba69a740e90e3bd9efa6a81cd7ae7"
 
       def install
-        bin.install "gel-cli-7.1.0+7877b37" => "gel"
+        bin.install "gel-cli-7.1.1+616a110" => "gel"
       end
     else
       odie "Unsupported CPU architecture!"
@@ -27,20 +27,20 @@ class GelCli < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://packages.geldata.com/archive/aarch64-unknown-linux-musl/gel-cli-7.1.0+657be26",
+      url "https://packages.geldata.com/archive/aarch64-unknown-linux-musl/gel-cli-7.1.1+754cfa2",
         using: :nounzip
-      sha256 "13c70a6cb18e51ab64694ea9f8a20a7cb8b6b4e6ac4ff36da2d6a8e67edb60c8"
+      sha256 "e718f520927c1a3c918ae05f9f92dded3390f38ccbdccfaa6f8184bb96de7267"
 
       def install
-        bin.install "gel-cli-7.1.0+657be26" => "gel"
+        bin.install "gel-cli-7.1.1+754cfa2" => "gel"
       end
     elsif Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://packages.geldata.com/archive/x86_64-unknown-linux-musl/gel-cli-7.1.0+5190e92",
+      url "https://packages.geldata.com/archive/x86_64-unknown-linux-musl/gel-cli-7.1.1+45ade47",
         using: :nounzip
-      sha256 "87b1ce61ae6c24e23e5da61ef99b3ce5a0e13f4b190318b40f662296e8ea5f6e"
+      sha256 "dcf183cc4bacb54fbdd3dae7d452a14d1ab3a860f910f1fc66be5158ceca1f99"
 
       def install
-        bin.install "gel-cli-7.1.0+5190e92" => "gel"
+        bin.install "gel-cli-7.1.1+45ade47" => "gel"
       end
     else
       odie "Unsupported CPU architecture!"
