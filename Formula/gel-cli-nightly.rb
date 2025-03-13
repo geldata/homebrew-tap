@@ -1,24 +1,24 @@
 class GelCliNightly < Formula
   desc "Latest release of the Gel command-line client (gel)"
   homepage "https://github.com/geldata/gel-cli"
-  version "7.2.0-dev.1306"
+  version "7.2.0-dev.1311"
 
   on_macos do
     if Hardware::CPU.physical_cpu_arm64?
-      url "https://packages.geldata.com/archive/aarch64-apple-darwin.nightly/gel-cli-7.2.0-dev.1306+4ae233c",
+      url "https://packages.geldata.com/archive/aarch64-apple-darwin.nightly/gel-cli-7.2.0-dev.1311+b37af77",
         using: :nounzip
-      sha256 "0b7abc9bb614a09a3c550752037547b1a73d84a3be7dee0efd714e5c77c84ecc"
+      sha256 "854eee0515ddfa38b8f3e6959229f547f5c7d62755892be828b0506766e8aeee"
 
       def install
-        bin.install "gel-cli-7.2.0-dev.1306+4ae233c" => "gel-nightly"
+        bin.install "gel-cli-7.2.0-dev.1311+b37af77" => "gel-nightly"
       end
     elsif Hardware::CPU.intel?
-      url "https://packages.geldata.com/archive/x86_64-apple-darwin.nightly/gel-cli-7.2.0-dev.1306+4ae233c",
+      url "https://packages.geldata.com/archive/x86_64-apple-darwin.nightly/gel-cli-7.2.0-dev.1311+b37af77",
         using: :nounzip
-      sha256 "c1dd696f85c16cdbf7c0e0f5c3be4fae1d43a07a167903cbc76613a933fa7ce8"
+      sha256 "3c3f8e22617f1284d9b8bce40a6282890d153a05011b82e509d613513f8be84c"
 
       def install
-        bin.install "gel-cli-7.2.0-dev.1306+4ae233c" => "gel-nightly"
+        bin.install "gel-cli-7.2.0-dev.1311+b37af77" => "gel-nightly"
       end
     else
       odie "Unsupported CPU architecture!"
@@ -27,20 +27,20 @@ class GelCliNightly < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://packages.geldata.com/archive/aarch64-unknown-linux-musl.nightly/gel-cli-7.2.0-dev.1306+f6931e7",
+      url "https://packages.geldata.com/archive/aarch64-unknown-linux-musl.nightly/gel-cli-7.2.0-dev.1311+b53c7bc",
         using: :nounzip
-      sha256 "fbd1379ea773083410175f88e27d6c5a6fad2e1f7ef6bcb31dcaa42f5dd98164"
+      sha256 "d95ff09f32fc855b0ccf77295124fcf320f44432d3b3ad760a55fd8516ea4367"
 
       def install
-        bin.install "gel-cli-7.2.0-dev.1306+f6931e7" => "gel-nightly"
+        bin.install "gel-cli-7.2.0-dev.1311+b53c7bc" => "gel-nightly"
       end
     elsif Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://packages.geldata.com/archive/x86_64-unknown-linux-musl.nightly/gel-cli-7.2.0-dev.1306+7d4a485",
+      url "https://packages.geldata.com/archive/x86_64-unknown-linux-musl.nightly/gel-cli-7.2.0-dev.1311+993d19b",
         using: :nounzip
-      sha256 "27094931e5ff002b33373f9b2d8b5581ce0b110b78c39cbaf39f3992f0b45960"
+      sha256 "700e0228135de8b6d3131c52e52253b716c93533274357d8109affbdb3614f03"
 
       def install
-        bin.install "gel-cli-7.2.0-dev.1306+7d4a485" => "gel-nightly"
+        bin.install "gel-cli-7.2.0-dev.1311+993d19b" => "gel-nightly"
       end
     else
       odie "Unsupported CPU architecture!"
