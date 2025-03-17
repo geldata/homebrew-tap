@@ -3,6 +3,11 @@ class GelCliNightly < Formula
   homepage "https://github.com/geldata/gel-cli"
   version "7.2.0-dev.1317"
 
+  def install_completions
+    chmod 0555, bin/"gel-nightly"
+    generate_completions_from_executable(bin/"gel-nightly", "_gen_completions", shell_parameter_format: :arg)
+  end
+
   on_macos do
     if Hardware::CPU.physical_cpu_arm64?
       url "https://packages.geldata.com/archive/aarch64-apple-darwin.nightly/gel-cli-7.2.0-dev.1317+4ff36ae",
@@ -11,6 +16,7 @@ class GelCliNightly < Formula
 
       def install
         bin.install "gel-cli-7.2.0-dev.1317+4ff36ae" => "gel-nightly"
+        install_completions
       end
     elsif Hardware::CPU.intel?
       url "https://packages.geldata.com/archive/x86_64-apple-darwin.nightly/gel-cli-7.2.0-dev.1317+4ff36ae",
@@ -19,6 +25,7 @@ class GelCliNightly < Formula
 
       def install
         bin.install "gel-cli-7.2.0-dev.1317+4ff36ae" => "gel-nightly"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"
@@ -33,6 +40,7 @@ class GelCliNightly < Formula
 
       def install
         bin.install "gel-cli-7.2.0-dev.1317+669b76c" => "gel-nightly"
+        install_completions
       end
     elsif Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://packages.geldata.com/archive/x86_64-unknown-linux-musl.nightly/gel-cli-7.2.0-dev.1317+878419d",
@@ -41,6 +49,7 @@ class GelCliNightly < Formula
 
       def install
         bin.install "gel-cli-7.2.0-dev.1317+878419d" => "gel-nightly"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"

@@ -3,6 +3,11 @@ class EdgedbCliTesting < Formula
   homepage "https://github.com/edgedb/edgedb-cli"
   version "4.0.0-alpha.1"
 
+  def install_completions
+    chmod 0555, bin/"edgedb-testing"
+    generate_completions_from_executable(bin/"edgedb-testing", "_gen_completions", shell_parameter_format: :arg)
+  end
+
   on_macos do
     if Hardware::CPU.physical_cpu_arm64?
       url "https://packages.edgedb.com/archive/aarch64-apple-darwin.testing/edgedb-cli-4.0.0-alpha.1+ddfbe70",
@@ -11,6 +16,7 @@ class EdgedbCliTesting < Formula
 
       def install
         bin.install "edgedb-cli-4.0.0-alpha.1+ddfbe70" => "edgedb-testing"
+        install_completions
       end
     elsif Hardware::CPU.intel?
       url "https://packages.edgedb.com/archive/x86_64-apple-darwin.testing/edgedb-cli-4.0.0-alpha.1+285f84f",
@@ -19,6 +25,7 @@ class EdgedbCliTesting < Formula
 
       def install
         bin.install "edgedb-cli-4.0.0-alpha.1+285f84f" => "edgedb-testing"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"
@@ -33,6 +40,7 @@ class EdgedbCliTesting < Formula
 
       def install
         bin.install "edgedb-cli-4.0.0-alpha.1+51ec714" => "edgedb-testing"
+        install_completions
       end
     elsif Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://packages.edgedb.com/archive/x86_64-unknown-linux-musl.testing/edgedb-cli-4.0.0-alpha.1+dce7814",
@@ -41,6 +49,7 @@ class EdgedbCliTesting < Formula
 
       def install
         bin.install "edgedb-cli-4.0.0-alpha.1+dce7814" => "edgedb-testing"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"
