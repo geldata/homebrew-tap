@@ -5,6 +5,11 @@ class {{ name.capitalize() }}Cli{{ channel.capitalize() if channel != "release" 
   homepage "https://github.com/geldata/gel-cli"
   version "{{ version }}"
 
+  def install_completions
+    chmod 0555, bin/"{{ binary }}"
+    generate_completions_from_executable(bin/"{{ binary }}", "_gen_completions", shell_parameter_format: :arg)
+  end
+
   on_macos do
     if Hardware::CPU.physical_cpu_arm64?
       url "{{ artifacts['aarch64-apple-darwin']['url'] }}",
@@ -13,6 +18,7 @@ class {{ name.capitalize() }}Cli{{ channel.capitalize() if channel != "release" 
 
       def install
         bin.install "{{ artifacts['aarch64-apple-darwin']['file']  }}" => "{{ binary }}"
+        install_completions
       end
     elsif Hardware::CPU.intel?
       url "{{ artifacts['x86_64-apple-darwin']['url'] }}",
@@ -21,6 +27,7 @@ class {{ name.capitalize() }}Cli{{ channel.capitalize() if channel != "release" 
 
       def install
         bin.install "{{ artifacts['x86_64-apple-darwin']['file']  }}" => "{{ binary }}"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"
@@ -35,6 +42,7 @@ class {{ name.capitalize() }}Cli{{ channel.capitalize() if channel != "release" 
 
       def install
         bin.install "{{ artifacts['aarch64-unknown-linux-musl']['file']  }}" => "{{ binary }}"
+        install_completions
       end
     elsif Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "{{ artifacts["x86_64-unknown-linux-musl"]["url"] }}",
@@ -43,6 +51,7 @@ class {{ name.capitalize() }}Cli{{ channel.capitalize() if channel != "release" 
 
       def install
         bin.install "{{ artifacts['x86_64-unknown-linux-musl']['file']  }}" => "{{ binary }}"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"

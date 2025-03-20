@@ -3,6 +3,11 @@ class EdgedbCliNightly < Formula
   homepage "https://github.com/edgedb/edgedb-cli"
   version "6.2.0-dev.1269"
 
+  def install_completions
+    chmod 0555, bin/"edgedb-nightly"
+    generate_completions_from_executable(bin/"edgedb-nightly", "_gen_completions", shell_parameter_format: :arg)
+  end
+
   on_macos do
     if Hardware::CPU.physical_cpu_arm64?
       url "https://packages.edgedb.com/archive/aarch64-apple-darwin.nightly/edgedb-cli-6.2.0-dev.1269+234034a",
@@ -11,6 +16,7 @@ class EdgedbCliNightly < Formula
 
       def install
         bin.install "edgedb-cli-6.2.0-dev.1269+234034a" => "edgedb-nightly"
+        install_completions
       end
     elsif Hardware::CPU.intel?
       url "https://packages.edgedb.com/archive/x86_64-apple-darwin.nightly/edgedb-cli-6.2.0-dev.1269+234034a",
@@ -19,6 +25,7 @@ class EdgedbCliNightly < Formula
 
       def install
         bin.install "edgedb-cli-6.2.0-dev.1269+234034a" => "edgedb-nightly"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"
@@ -33,6 +40,7 @@ class EdgedbCliNightly < Formula
 
       def install
         bin.install "edgedb-cli-6.2.0-dev.1269+e373d52" => "edgedb-nightly"
+        install_completions
       end
     elsif Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://packages.edgedb.com/archive/x86_64-unknown-linux-musl.nightly/edgedb-cli-6.2.0-dev.1269+b471b49",
@@ -41,6 +49,7 @@ class EdgedbCliNightly < Formula
 
       def install
         bin.install "edgedb-cli-6.2.0-dev.1269+b471b49" => "edgedb-nightly"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"

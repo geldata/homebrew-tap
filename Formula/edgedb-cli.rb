@@ -3,6 +3,11 @@ class EdgedbCli < Formula
   homepage "https://github.com/edgedb/edgedb-cli"
   version "6.1.2"
 
+  def install_completions
+    chmod 0555, bin/"edgedb"
+    generate_completions_from_executable(bin/"edgedb", "_gen_completions", shell_parameter_format: :arg)
+  end
+
   on_macos do
     if Hardware::CPU.physical_cpu_arm64?
       url "https://packages.edgedb.com/archive/aarch64-apple-darwin/edgedb-cli-6.1.2+02c2b9d",
@@ -11,6 +16,7 @@ class EdgedbCli < Formula
 
       def install
         bin.install "edgedb-cli-6.1.2+02c2b9d" => "edgedb"
+        install_completions
       end
     elsif Hardware::CPU.intel?
       url "https://packages.edgedb.com/archive/x86_64-apple-darwin/edgedb-cli-6.1.2+02c2b9d",
@@ -19,6 +25,7 @@ class EdgedbCli < Formula
 
       def install
         bin.install "edgedb-cli-6.1.2+02c2b9d" => "edgedb"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"
@@ -33,6 +40,7 @@ class EdgedbCli < Formula
 
       def install
         bin.install "edgedb-cli-6.1.2+f4c653c" => "edgedb"
+        install_completions
       end
     elsif Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://packages.edgedb.com/archive/x86_64-unknown-linux-musl/edgedb-cli-6.1.2+ac96ce0",
@@ -41,6 +49,7 @@ class EdgedbCli < Formula
 
       def install
         bin.install "edgedb-cli-6.1.2+ac96ce0" => "edgedb"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"

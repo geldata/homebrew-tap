@@ -3,6 +3,11 @@ class GelCli < Formula
   homepage "https://github.com/geldata/gel-cli"
   version "7.1.1"
 
+  def install_completions
+    chmod 0555, bin/"gel"
+    generate_completions_from_executable(bin/"gel", "_gen_completions", shell_parameter_format: :arg)
+  end
+
   on_macos do
     if Hardware::CPU.physical_cpu_arm64?
       url "https://packages.geldata.com/archive/aarch64-apple-darwin/gel-cli-7.1.1+616a110",
@@ -11,6 +16,7 @@ class GelCli < Formula
 
       def install
         bin.install "gel-cli-7.1.1+616a110" => "gel"
+        install_completions
       end
     elsif Hardware::CPU.intel?
       url "https://packages.geldata.com/archive/x86_64-apple-darwin/gel-cli-7.1.1+616a110",
@@ -19,6 +25,7 @@ class GelCli < Formula
 
       def install
         bin.install "gel-cli-7.1.1+616a110" => "gel"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"
@@ -33,6 +40,7 @@ class GelCli < Formula
 
       def install
         bin.install "gel-cli-7.1.1+754cfa2" => "gel"
+        install_completions
       end
     elsif Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://packages.geldata.com/archive/x86_64-unknown-linux-musl/gel-cli-7.1.1+45ade47",
@@ -41,6 +49,7 @@ class GelCli < Formula
 
       def install
         bin.install "gel-cli-7.1.1+45ade47" => "gel"
+        install_completions
       end
     else
       odie "Unsupported CPU architecture!"
