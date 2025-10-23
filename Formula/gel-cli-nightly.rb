@@ -14,7 +14,7 @@ class GelCliNightly < Formula
         using: :nounzip
       sha256 "60329b10374702e456d94d0c430582b698fb9a97fe3207ff8ce6468ad5bfe178"
 
-      def install
+      define_method :install do
         bin.install "gel-cli-7.5.0-dev.1372+5ab407b" => "gel-nightly"
         install_completions
       end
@@ -23,7 +23,7 @@ class GelCliNightly < Formula
         using: :nounzip
       sha256 "bedb04cb5ddd132e16422722d66a7fd4eeed513353d556a27ae8ff0aea7455d1"
 
-      def install
+      define_method :install do
         bin.install "gel-cli-7.5.0-dev.1372+fab03e9" => "gel-nightly"
         install_completions
       end
@@ -38,7 +38,7 @@ class GelCliNightly < Formula
         using: :nounzip
       sha256 "f9da81a6cb184c9ffe421b491c3d18ed9d4f786bb0482ac3e783513a26c1f652"
 
-      def install
+      define_method :install do
         bin.install "gel-cli-7.5.0-dev.1372+b43a5e0" => "gel-nightly"
         install_completions
       end
@@ -47,7 +47,7 @@ class GelCliNightly < Formula
         using: :nounzip
       sha256 "51d4333193d3ea30526140bf9f63da9a331142c45d7e4d72f032343739e7d136"
 
-      def install
+      define_method :install do
         bin.install "gel-cli-7.5.0-dev.1372+0f423e6" => "gel-nightly"
         install_completions
       end

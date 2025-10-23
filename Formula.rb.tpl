@@ -16,7 +16,7 @@ class {{ name.capitalize() }}Cli{{ channel.capitalize() if channel != "release" 
         using: :nounzip
       sha256 "{{ artifacts['aarch64-apple-darwin']['sha256'] }}"
 
-      def install
+      define_method :install do
         bin.install "{{ artifacts['aarch64-apple-darwin']['file']  }}" => "{{ binary }}"
         install_completions
       end
@@ -25,7 +25,7 @@ class {{ name.capitalize() }}Cli{{ channel.capitalize() if channel != "release" 
         using: :nounzip
       sha256 "{{ artifacts['x86_64-apple-darwin']['sha256'] }}"
 
-      def install
+      define_method :install do
         bin.install "{{ artifacts['x86_64-apple-darwin']['file']  }}" => "{{ binary }}"
         install_completions
       end
@@ -40,7 +40,7 @@ class {{ name.capitalize() }}Cli{{ channel.capitalize() if channel != "release" 
         using: :nounzip
       sha256 "{{ artifacts["aarch64-unknown-linux-musl"]["sha256"] }}"
 
-      def install
+      define_method :install do
         bin.install "{{ artifacts['aarch64-unknown-linux-musl']['file']  }}" => "{{ binary }}"
         install_completions
       end
@@ -49,7 +49,7 @@ class {{ name.capitalize() }}Cli{{ channel.capitalize() if channel != "release" 
         using: :nounzip
       sha256 "{{ artifacts["x86_64-unknown-linux-musl"]["sha256"] }}"
 
-      def install
+      define_method :install do
         bin.install "{{ artifacts['x86_64-unknown-linux-musl']['file']  }}" => "{{ binary }}"
         install_completions
       end
