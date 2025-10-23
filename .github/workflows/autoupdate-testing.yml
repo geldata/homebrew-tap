@@ -1,7 +1,7 @@
 name: Auto-commit latest package versions (testing)
 on:
   schedule:
-    - cron: "0 2 * * *"
+    - cron: "5 2 * * *"
   workflow_dispatch:
     inputs: {}
 
