@@ -14,7 +14,7 @@ class EdgedbCli < Formula
         using: :nounzip
       sha256 "02c7a0e45399710ecdd51e38b8647012f9dcd31c292f95b8cf5fe3119251c1d8"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-6.1.2+02c2b9d" => "edgedb"
         install_completions
       end
@@ -23,7 +23,7 @@ class EdgedbCli < Formula
         using: :nounzip
       sha256 "9b5f795835e4eeba573283c9a7b41f7c91073c9d062e9d4789ef4568d54abefa"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-6.1.2+02c2b9d" => "edgedb"
         install_completions
       end
@@ -38,7 +38,7 @@ class EdgedbCli < Formula
         using: :nounzip
       sha256 "4bfc7f15711698626faf3a3412489dfb9fb5958a560f7654ec8045b43e9c6048"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-6.1.2+f4c653c" => "edgedb"
         install_completions
       end
@@ -47,7 +47,7 @@ class EdgedbCli < Formula
         using: :nounzip
       sha256 "3217ad2180772c9f6d39216ccd5ec4775f651d83e6804e652f3aa903042609e5"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-6.1.2+ac96ce0" => "edgedb"
         install_completions
       end

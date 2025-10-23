@@ -14,7 +14,7 @@ class GelCli < Formula
         using: :nounzip
       sha256 "49a6b3a7df750bfd3018ba004761a91d8aba9a4295b488a32d6f96414a3c186a"
 
-      def install
+      define_method :install do
         bin.install "gel-cli-7.4.0+bb0c441" => "gel"
         install_completions
       end
@@ -23,7 +23,7 @@ class GelCli < Formula
         using: :nounzip
       sha256 "07db80fd17d6f0ec3365fc339589350f591b4ab1a058eeba6dbc9aa0c6eff03c"
 
-      def install
+      define_method :install do
         bin.install "gel-cli-7.4.0+bb0c441" => "gel"
         install_completions
       end
@@ -38,7 +38,7 @@ class GelCli < Formula
         using: :nounzip
       sha256 "ed9dbb41efe7a89fe927bfbd2abff85a09addab783ead3cb1a3e3400236585ee"
 
-      def install
+      define_method :install do
         bin.install "gel-cli-7.4.0+6a31e0e" => "gel"
         install_completions
       end
@@ -47,7 +47,7 @@ class GelCli < Formula
         using: :nounzip
       sha256 "7f340a393481bec55295edff6f2cc0ee44c8b4bd7e6c92d1a21cbcad38b7fb7b"
 
-      def install
+      define_method :install do
         bin.install "gel-cli-7.4.0+dad3a5f" => "gel"
         install_completions
       end

@@ -14,7 +14,7 @@ class EdgedbCliNightly < Formula
         using: :nounzip
       sha256 "f117e176b02c142680aa6c8d4920223de6911a039b3e3dee6dff4964abd817a1"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-6.2.0-dev.1269+234034a" => "edgedb-nightly"
         install_completions
       end
@@ -23,7 +23,7 @@ class EdgedbCliNightly < Formula
         using: :nounzip
       sha256 "40ff250a8f5f719a8a3605e3ab8c5326d09fd02b229f486860f096505b5e64ac"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-6.2.0-dev.1269+234034a" => "edgedb-nightly"
         install_completions
       end
@@ -38,7 +38,7 @@ class EdgedbCliNightly < Formula
         using: :nounzip
       sha256 "bf299d1e287a3cbdfd16dec106721a2199eb702db661044500b940bb635b4e69"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-6.2.0-dev.1269+e373d52" => "edgedb-nightly"
         install_completions
       end
@@ -47,7 +47,7 @@ class EdgedbCliNightly < Formula
         using: :nounzip
       sha256 "a7d0790c7afc151d84fc54d5c2725b5f14fda903122c0c27d2e22651aa11e3cf"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-6.2.0-dev.1269+b471b49" => "edgedb-nightly"
         install_completions
       end

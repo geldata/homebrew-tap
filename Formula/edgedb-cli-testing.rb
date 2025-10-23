@@ -14,7 +14,7 @@ class EdgedbCliTesting < Formula
         using: :nounzip
       sha256 "529cc1d5f2ad4333962d250a06cc9950b9c3b5a05c35236114c15d10317da976"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-4.0.0-alpha.1+ddfbe70" => "edgedb-testing"
         install_completions
       end
@@ -23,7 +23,7 @@ class EdgedbCliTesting < Formula
         using: :nounzip
       sha256 "bc579953feaf6a0855c27255726cfe0bc0e54cb289bd13ff2bbb926a3dc3561a"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-4.0.0-alpha.1+285f84f" => "edgedb-testing"
         install_completions
       end
@@ -38,7 +38,7 @@ class EdgedbCliTesting < Formula
         using: :nounzip
       sha256 "5352e68940114f38e51f90a9c94577368a5f9614d85ee02dbee05b339fa33ae0"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-4.0.0-alpha.1+51ec714" => "edgedb-testing"
         install_completions
       end
@@ -47,7 +47,7 @@ class EdgedbCliTesting < Formula
         using: :nounzip
       sha256 "23f1e6d1f982756cad8385dc404c09a167d5ccf8a39724826bb609ab98e09b9d"
 
-      def install
+      define_method :install do
         bin.install "edgedb-cli-4.0.0-alpha.1+dce7814" => "edgedb-testing"
         install_completions
       end
