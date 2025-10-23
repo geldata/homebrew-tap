@@ -1,0 +1,27 @@
+name: Auto-commit latest package versions (nightly)
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    inputs: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install semver jinja2
+      - name: Run autoupdate.py
+        run: ./autoupdate.py --channel nightly
+      - uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5.1.0
+        with:
+            commit_message: "Auto-update gel-cli-nightly"
+

@@ -7,6 +7,7 @@ from typing import (
     TypedDict,
 )
 
+import argparse
 import json
 import functools
 import pathlib
@@ -160,12 +161,26 @@ def render_formula(path: pathlib.Path, channel: str) -> None:
 
 
 def main() -> None:
-    release_cli = CURRENT_DIR / "Formula" / "gel-cli.rb"
-    testing_cli = CURRENT_DIR / "Formula" / "gel-cli-testing.rb"
-    nightly_cli = CURRENT_DIR / "Formula" / "gel-cli-nightly.rb"
-    render_formula(release_cli, channel="release")
-    render_formula(testing_cli, channel="testing")
-    render_formula(nightly_cli, channel="nightly")
+    parser = argparse.ArgumentParser(
+        description="Update Homebrew formula for Gel CLI"
+    )
+    parser.add_argument(
+        "--channel",
+        type=str,
+        choices=["release", "testing", "nightly"],
+        required=True,
+        help="The channel to update (release, testing, or nightly)",
+    )
+    args = parser.parse_args()
+
+    channel_to_formula = {
+        "release": CURRENT_DIR / "Formula" / "gel-cli.rb",
+        "testing": CURRENT_DIR / "Formula" / "gel-cli-testing.rb",
+        "nightly": CURRENT_DIR / "Formula" / "gel-cli-nightly.rb",
+    }
+
+    formula_path = channel_to_formula[args.channel]
+    render_formula(formula_path, channel=args.channel)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-name: Auto-commit latest package versions
+name: Auto-commit latest package versions (testing)
 on:
   schedule:
     - cron: "0 2 * * *"
@@ -20,7 +20,8 @@ jobs:
       - name: Install dependencies
         run: pip install semver jinja2
       - name: Run autoupdate.py
-        run: ./autoupdate.py
+        run: ./autoupdate.py --channel testing
       - uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5.1.0
         with:
-            commit_message: "Auto-update package versions"
+            commit_message: "Auto-update gel-cli-testing"
+
