@@ -1,7 +1,7 @@
 class GelCli < Formula
   desc "Latest release of the Gel command-line client (gel)"
   homepage "https://github.com/geldata/gel-cli"
-  version "7.4.0"
+  version "7.9.0"
 
   def install_completions
     chmod 0555, bin/"gel"
@@ -10,21 +10,21 @@ class GelCli < Formula
 
   on_macos do
     if Hardware::CPU.physical_cpu_arm64?
-      url "https://packages.geldata.com/archive/aarch64-apple-darwin/gel-cli-7.4.0+bb0c441",
+      url "https://packages.geldata.com/archive/aarch64-apple-darwin/gel-cli-7.9.0+c84d665",
         using: :nounzip
-      sha256 "49a6b3a7df750bfd3018ba004761a91d8aba9a4295b488a32d6f96414a3c186a"
+      sha256 "a21ebfdc85abc3922e5732e4a1af932e0193b5993b274c1e08c861e185c46ad3"
 
       define_method :install do
-        bin.install "gel-cli-7.4.0+bb0c441" => "gel"
+        bin.install "gel-cli-7.9.0+c84d665" => "gel"
         install_completions
       end
     elsif Hardware::CPU.intel?
-      url "https://packages.geldata.com/archive/x86_64-apple-darwin/gel-cli-7.4.0+bb0c441",
+      url "https://packages.geldata.com/archive/x86_64-apple-darwin/gel-cli-7.9.0+070b371",
         using: :nounzip
-      sha256 "07db80fd17d6f0ec3365fc339589350f591b4ab1a058eeba6dbc9aa0c6eff03c"
+      sha256 "3129b77db985471f4bd5a11c1745e7e5fd2008471f7226d85d0a2910af4b56ed"
 
       define_method :install do
-        bin.install "gel-cli-7.4.0+bb0c441" => "gel"
+        bin.install "gel-cli-7.9.0+070b371" => "gel"
         install_completions
       end
     else
@@ -34,21 +34,21 @@ class GelCli < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://packages.geldata.com/archive/aarch64-unknown-linux-musl/gel-cli-7.4.0+6a31e0e",
+      url "https://packages.geldata.com/archive/aarch64-unknown-linux-musl/gel-cli-7.9.0+10975b6",
         using: :nounzip
-      sha256 "ed9dbb41efe7a89fe927bfbd2abff85a09addab783ead3cb1a3e3400236585ee"
+      sha256 "94063681e026a7cc6c006e4219af3800c7ec857f2495dd3101bdcda9c8d8a1a2"
 
       define_method :install do
-        bin.install "gel-cli-7.4.0+6a31e0e" => "gel"
+        bin.install "gel-cli-7.9.0+10975b6" => "gel"
         install_completions
       end
     elsif Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://packages.geldata.com/archive/x86_64-unknown-linux-musl/gel-cli-7.4.0+dad3a5f",
+      url "https://packages.geldata.com/archive/x86_64-unknown-linux-musl/gel-cli-7.9.0+070b371",
         using: :nounzip
-      sha256 "7f340a393481bec55295edff6f2cc0ee44c8b4bd7e6c92d1a21cbcad38b7fb7b"
+      sha256 "23fc4830e65a469cdf50e90eb4c63ae510a803a2168b2ce5687807823cb421b1"
 
       define_method :install do
-        bin.install "gel-cli-7.4.0+dad3a5f" => "gel"
+        bin.install "gel-cli-7.9.0+070b371" => "gel"
         install_completions
       end
     else
